@@ -23,7 +23,7 @@ export class SearchListComponent implements OnInit, OnDestroy, IPaging<Repositor
   private loadingSubscribe: any;
   public total_count = 0;
   private searchText: string;
-  public isLoadingtrue;
+  public isLoading = true;
   public pageProps: IPageProps = { page: 0, per_page: 10 };
 
   public displayedColumns: string[] = [
