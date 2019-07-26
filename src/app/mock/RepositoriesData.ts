@@ -8,6 +8,6 @@ const mockrepoData: Repository[] = [{
     fork_count: 100,
     open_issues_count: 14,
     full_name: 'fullname'
-}]
+}];
 
 export default mockrepoData;

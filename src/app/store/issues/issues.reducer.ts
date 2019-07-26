@@ -65,7 +65,7 @@ export function IssuesReducer(state = initialState, action: Action): IssuesState
       return {
         ...state,
         pageProps: {...action.payload }
-      }
+      };
     }
 
     default:

@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { IIssue, IPaging, Repository, IPageProps } from '@app/shared/models/search/models';
@@ -13,17 +13,17 @@ import { State } from '@store/search/search.state';
   templateUrl: './issues-list.component.html',
   styleUrls: ['./issues-list.component.scss']
 })
-export class IssuesListComponent implements OnInit, IPaging<IIssue> {
+export class IssuesListComponent implements OnInit, OnDestroy, IPaging<IIssue> {
   public dataSource: Observable<IIssue[]> = null;
   public items: IIssue[];
   private loadingSubscribe: any;
   private selectedRepoSubscribe: any;
   private pagingSubscribe: any;
   private totalCountSubscribe: any;
-  public isLoading: boolean = false;
+  public isLoading = false;
   private selectedRepo: Repository = null;
-  public total_count: number = 0;
-  public pageProps: IPageProps = { page: 0, per_page: 10 }
+  public total_count = 0;
+  public pageProps: IPageProps = { page: 0, per_page: 10 };
   public displayedColumns: string[] = [
     'number', 'title'
   ];
@@ -66,9 +66,9 @@ export class IssuesListComponent implements OnInit, IPaging<IIssue> {
         })
       );
 
-      this.store.dispatch(
-        new IssuesActions.GetRepoIssues(this.selectedRepo)
-      );
+    this.store.dispatch(
+      new IssuesActions.GetRepoIssues(this.selectedRepo)
+    );
   }
 
   ngOnDestroy() {

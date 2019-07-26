@@ -13,7 +13,7 @@ const SEARCH_DELAY = 500;
 })
 export class SearchBarComponent implements OnInit {
   private debounceTimer = undefined;
-  public searchParam: string = 'awesome repo';
+  public searchParam = 'awesome repo';
 
   constructor(private searchStore: Store<SearchState>) {
   }
@@ -32,9 +32,9 @@ export class SearchBarComponent implements OnInit {
           clearTimeout(this.debounceTimer);
       }
       this.debounceTimer = setTimeout(
-        (search_param: string) => {
+        (param: string) => {
           this.searchStore.dispatch(
-            new SearchActions.SetSearchText(search_param)
+            new SearchActions.SetSearchText(param)
           );
         },
         SEARCH_DELAY,

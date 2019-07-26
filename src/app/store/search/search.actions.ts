@@ -8,7 +8,7 @@ export const GET_SEARCH_RESULTS_SUCCESS = '[Search] GET_SEARCH_RESULTS_SUCCESS';
 export const GET_SEARCH_RESULTS_ERROR = '[Search] GET_SEARCH_RESULTS_ERROR';
 export const SET_REPO_PAGING = '[Search] SET_REPO_PAGING';
 export const SET_SEARCH_TEXT = '[Search] SET_SEARCH_TEXT';
-export const SET_SELECTED_REPOSITORY = "[Search] SET_SELECTED_REPOSITORY";
+export const SET_SELECTED_REPOSITORY = '[Search] SET_SELECTED_REPOSITORY';
 
 export class GetSearchResults implements Action {
   readonly type = GET_SEARCH_RESULTS;
@@ -39,6 +39,6 @@ export class SetSelectedRepository implements Action {
   constructor(public payload: Repository) { }
 }
 
-export type All = GetSearchResults | GetSearchResultsSuccess 
+export type All = GetSearchResults | GetSearchResultsSuccess
   | GetSearchResultsError | SetRepoPaging | SetSearchText
   | SetSelectedRepository;

@@ -6,14 +6,14 @@ const defaultPaging = {
 };
 
 export class ApiQueryBuilder {
-  private name: String;
+  private name: string;
   private body: object;
   private paging: IPageProps;
-  private query: String;
+  private query: string;
 
   constructor() { }
 
-  addName(name: String) {
+  addName(name: string) {
     this.name = name;
     return this;
   }
@@ -28,8 +28,8 @@ export class ApiQueryBuilder {
     this.paging.page = pagingData.page + 1;
 
     let pagingQuery = '';
-    for (var prop in this.paging) {
-      pagingQuery += `&${prop}=${this.paging[prop]}`
+    for (const prop in this.paging) {
+      pagingQuery += `&${prop}=${this.paging[prop]}`;
     }
 
     this.query += pagingQuery;
@@ -39,21 +39,21 @@ export class ApiQueryBuilder {
 
   addQuery(queryObject: any) {
     let query = '';
-    for (var prop in queryObject) {
-      query += `&${prop}=${queryObject[prop]}`
+    for (const prop in queryObject) {
+      query += `&${prop}=${queryObject[prop]}`;
     }
 
     this.query = query;
     return this;
   }
 
-  addPageNumber(number: number) {
-    this.paging.page = number;
+  addPageNumber(num: number) {
+    this.paging.page = num;
     return this;
   }
 
-  addPageSize(number: number) {
-    this.paging.per_page = number;
+  addPageSize(num: number) {
+    this.paging.per_page = num;
     return this;
   }
 

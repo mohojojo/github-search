@@ -45,9 +45,9 @@ describe('SearchBarComponent', () => {
   it('should call onSearch', async(() => {
     spyOn(component, 'onSearch');
 
-    let button = getSearchButton();
+    const button = getSearchButton();
     button.click();
-  
+
     fixture.whenStable().then(() => {
       expect(component.onSearch).toHaveBeenCalled();
     });
@@ -55,11 +55,11 @@ describe('SearchBarComponent', () => {
 
   it('should dispatch SetSearchText after click', fakeAsync(() => {
     dispatchSpy = spyOn(store, 'dispatch');
-    let button = getSearchButton();
+    const button = getSearchButton();
     button.click();
 
-    tick(500)
-    fixture.detectChanges()
+    tick(500);
+    fixture.detectChanges();
 
     expect(dispatchSpy).toHaveBeenCalledTimes(1);
     expect(dispatchSpy).toHaveBeenCalledWith(

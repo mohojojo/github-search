@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as SearchActions from '@store/search/search.actions';
@@ -14,17 +14,17 @@ import { IssuesListComponent } from './components/issues-list/issues-list.compon
   templateUrl: './search-list.component.html',
   styleUrls: ['./search-list.component.scss']
 })
-export class SearchListComponent implements OnInit, IPaging<Repository> {
+export class SearchListComponent implements OnInit, OnDestroy, IPaging<Repository> {
   public dataSource: Observable<Repository[]> = null;
   public items: Repository[] = null;
   private totalCountSubscribe: any;
   private searchTextSubscribe: any;
   private pagingSubscribe: any;
   private loadingSubscribe: any;
-  public total_count: number = 0;
+  public total_count = 0;
   private searchText: string;
-  public isLoading: boolean = true;
-  public pageProps: IPageProps = { page: 0, per_page: 10 }
+  public isLoadingtrue;
+  public pageProps: IPageProps = { page: 0, per_page: 10 };
 
   public displayedColumns: string[] = [
     'name', 'stargazers_count', 'forks_count', 'description', 'open_issues_count'
@@ -55,7 +55,7 @@ export class SearchListComponent implements OnInit, IPaging<Repository> {
 
       this.store.dispatch(
         new SearchActions.GetSearchResults()
-      )
+      );
     });
   }
 
@@ -75,9 +75,9 @@ export class SearchListComponent implements OnInit, IPaging<Repository> {
         })
       );
 
-      this.store.dispatch(
-        new SearchActions.GetSearchResults()
-      );
+    this.store.dispatch(
+      new SearchActions.GetSearchResults()
+    );
   }
 
   onIssueCountClicked(item) {

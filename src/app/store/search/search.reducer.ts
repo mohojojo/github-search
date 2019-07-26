@@ -89,14 +89,14 @@ export function SearchReducer(state = initialState, action: Action): SearchState
       return {
         ...state,
         pageProps: {...action.payload }
-      }
+      };
     }
 
     case SearchActions.SET_SELECTED_REPOSITORY: {
       return {
         ...state,
         selectedRepo: action.payload
-      }
+      };
     }
 
     default:

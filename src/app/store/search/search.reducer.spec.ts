@@ -33,14 +33,14 @@ describe('Search Reducer', () => {
             const repos = mockrepoData;
             const action = new searchActions.GetSearchResultsSuccess({items: repos});
             const result = SearchReducer(initialState, action);
-    
+
             expect(result).toEqual({
             ...initialState,
             items: repos,
             loading: false
             });
         });
-    })
+    });
 
     describe('[Search] GetSearchUserResults Error', () => {
         it('should update error in state', () => {
@@ -61,7 +61,7 @@ describe('Search Reducer', () => {
             const text = 'test';
             const action = new searchActions.SetSearchText(text);
             const result = SearchReducer(initialState, action);
-    
+
             expect(result).toEqual({
                 ...initialState,
                 searchText: text
@@ -74,7 +74,7 @@ describe('Search Reducer', () => {
             const paging: IPageProps = { page: 1, per_page: 5 };
             const action = new searchActions.SetRepoPaging(paging);
             const result = SearchReducer(initialState, action);
-    
+
             expect(result).toEqual({
                 ...initialState,
                 pageProps: { ...paging }
@@ -87,7 +87,7 @@ describe('Search Reducer', () => {
             const selectedRepo: Repository = mockrepoData[0];
             const action = new searchActions.SetSelectedRepository(selectedRepo);
             const result = SearchReducer(initialState, action);
-    
+
             expect(result).toEqual({
                 ...initialState,
                 selectedRepo
