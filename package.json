@@ -1,6 +1,9 @@
 {
   "name": "github-search",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "description": "Github open issue search",
+  "author": "Balazs Mogyorodi",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
