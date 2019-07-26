@@ -1,0 +1,10 @@
+.search-bar {
+
+    & .mat-toolbar-row, .mat-toolbar-single-row {
+        height: 100px;
+    }
+    
+    & .mat-form-field {
+        width: 100%;
+    }
+}

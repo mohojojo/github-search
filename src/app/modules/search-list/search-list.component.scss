@@ -1,0 +1,39 @@
+.search-list {
+    & table {
+        width: 100%;
+
+        & .mat-column-name {
+            width: 200px;
+        }
+
+        & .mat-column-forks_count {
+            width: 100px;
+        }
+
+        & .mat-column-stargazers_count {
+            width: 100px;
+        }
+
+        & .mat-column-description {
+            max-width: 600px;
+        }
+    }
+
+    &-table-container {
+        height: calc(100vh - 200px);
+        overflow: scroll;
+    }
+
+    &-no-data {
+        margin-top:20px;
+        text-align: center
+    }
+
+    &-loading-spinner-container {
+        margin-top:20px;
+    }
+
+    &-loading-spinner {
+        margin: 0 auto;
+    }
+}

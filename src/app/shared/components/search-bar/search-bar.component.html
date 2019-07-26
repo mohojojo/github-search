@@ -1,0 +1,12 @@
+<div block='search-bar'>
+    <mat-toolbar>
+        <mat-form-field class="example-full-width">
+            <input #sv matInput placeholder="Search" name="qu" id="universal-search" [(ngModel)]="searchParam"
+                (keyup.enter)="onSearch()" autocomplete="off" />
+        </mat-form-field>
+        <button mat-icon-button (click)="onSearch()">
+            <mat-icon>search</mat-icon>
+        </button>
+    </mat-toolbar>
+</div>
+

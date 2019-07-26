@@ -1,0 +1,65 @@
+ <div
+    block="search-list"
+    >
+    <div elem='no-data' *ngIf="!(dataSource | async).length && !isLoading" 
+        class="mat-h2">
+        No data. Please use the searchbar!
+    </div>
+
+    <div elem='loading-spinner-container'>
+        <mat-spinner elem='loading-spinner' *ngIf="isLoading"></mat-spinner>
+    </div>
+
+    <div elem='table-container' *ngIf="(dataSource | async).length && !isLoading">
+        <table
+            mat-table
+            [dataSource]="dataSource"
+        >
+        
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <td mat-cell *matCellDef="let element">
+                    <a href="{{element.html_url}}" target="_blank">{{ element.name }}</a>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="forks_count">
+                <th mat-header-cell *matHeaderCellDef>Stargazers</th>
+                <td mat-cell *matCellDef="let element">
+                    {{ element.forks_count }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="stargazers_count">
+                <th mat-header-cell *matHeaderCellDef>Forks</th>
+                <td mat-cell *matCellDef="let element">
+                    {{ element.stargazers_count }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef>Description</th>
+                <td mat-cell *matCellDef="let element">
+                    {{ element.description }}
+                </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="open_issues_count">
+                <th mat-header-cell *matHeaderCellDef>Open issues</th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-mini-fab [disabled]="element.open_issues_count === 0"
+                        [color]="getButtonSeverity(element.open_issues_count)" (click)="onIssueCountClicked(element)">
+                            {{ element.open_issues_count }}
+                    </button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+    </div>
+    <div *ngIf="(dataSource | async).length && !isLoading">
+        <mat-paginator [length]="total_count > 1000 ? 1000 : total_count" [pageSizeOptions]="[10, 25, 50]" showFirstLastButtons
+            (page)="pagingChanged($event)" [pageSize]="pageProps.per_page" [pageIndex]="pageProps.page">
+        </mat-paginator>
+    </div>
+</div>

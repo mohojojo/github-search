@@ -1,0 +1,26 @@
+.issues-list {
+    & table {
+        width: 100%;
+
+        & .mat-column-number {
+            width: 40px;
+        }
+
+        & .mat-column-title {
+            width: 300px;
+        }
+    }
+
+    &-table-container {
+        height: calc(100vh - 250px);
+        overflow: scroll;
+    }
+
+    &-loading-spinner-container {
+        margin-top:20px;
+    }
+
+    &-loading-spinner {
+        margin: 0 auto;
+    }
+}
