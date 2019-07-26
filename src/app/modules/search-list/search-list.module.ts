@@ -7,7 +7,6 @@ import { SearchReducer } from '@app/store/search/search.reducer';
 import { IssuesListComponent } from './components/issues-list/issues-list.component';
 
 @NgModule({
-  declarations: [SearchListComponent, IssuesListComponent],
   imports: [
     CommonModule,
     SharedModule,
